@@ -1,5 +1,6 @@
 const timeElement = document.getElementById("time");
 const currentTime = new Date().toLocaleTimeString();
+const nameElement = document.getElementById("name");
 timeElement.textContent = `The time is:${currentTime}`;
 
 chrome.action.setBadgeText(
@@ -8,6 +9,10 @@ chrome.action.setBadgeText(
     },
     () => {
         console.log("Finished setting badge text.");
-    },
-    
+    }
 );
+
+chrome.storage.sync.get(["name"], (res) => {
+    const name = res.name ?? "???";
+    nameElement.textContent = `Your name is: ${name}`;
+});
