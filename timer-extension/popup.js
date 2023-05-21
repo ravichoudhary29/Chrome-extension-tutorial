@@ -16,3 +16,4 @@ chrome.storage.sync.get(["name"], (res) => {
     const name = res.name ?? "???";
     nameElement.textContent = `Your name is: ${name}`;
 });
+
